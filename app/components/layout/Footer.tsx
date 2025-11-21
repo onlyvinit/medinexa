@@ -5,14 +5,39 @@ import Link from "next/link";
 import { useState } from "react";
 import { useAuth } from "@/app/context/AuthContext";
 import LoginModal from "@/app/components/forms/LoginForm";
+import RegisterModal from "@/app/components/forms/RegisterForm";
 import ButtonPrimary from "@/app/components/ui/ButtonPrimary";
 
 export default function Footer() {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+
+  const switchToRegister = () => {
+    setIsLoginOpen(false);
+    setIsRegisterOpen(true);
+  };
+
+  const switchToLogin = () => {
+    setIsRegisterOpen(false);
+    setIsLoginOpen(true);
+  };
+
   return (
     <>
-      <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
+      {/* LOGIN MODAL */}
+      <LoginModal
+        isOpen={isLoginOpen}
+        onClose={() => setIsLoginOpen(false)}
+        onSwitchToRegister={switchToRegister}
+      />
+
+      {/* REGISTER MODAL */}
+      <RegisterModal
+        isOpen={isRegisterOpen}
+        onClose={() => setIsRegisterOpen(false)}
+        onSwitchToLogin={switchToLogin}
+      />
 
       <footer className="bg-[#0a0f29] text-white py-16 font-sans">
         <div className="container mx-auto px-6">
@@ -174,24 +199,25 @@ export default function Footer() {
               <div className="flex flex-col md:flex-row justify-between items-center border-t border-white/10 pt-8 gap-6">
                 <div className="flex gap-4">
                   {!user ? (
-                    <ButtonPrimary
-                      label="Sign in"
+                    <button
                       onClick={() => setIsLoginOpen(true)}
-                      className="px-8 py-2.5"
-                    />
+                      className="px-6 py-2.5 border-2 border-blue-600 text-blue-600 font-semibold rounded-lg hover:bg-blue-600 hover:text-white transition-all duration-200"
+                    >
+                      Login
+                    </button>
                   ) : (
-                    <ButtonPrimary
-                      label="Signed in"
-                      disabled
-                      className="px-8 py-2.5 opacity-50 cursor-not-allowed"
-                    />
+                    <button
+                      onClick={logout}
+                      className="px-6 py-2.5 border-2 border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-100 transition-all duration-200"
+                    >
+                      Logout
+                    </button>
                   )}
 
                   <Link href="/intake">
-                    <ButtonPrimary
-                      label="Am I eligible"
-                      className="px-8 py-2.5"
-                    />
+                    <button className="px-6 py-2.5 bg-linear-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-200">
+                      Am I Eligible?
+                    </button>
                   </Link>
                 </div>
 
