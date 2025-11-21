@@ -9,7 +9,7 @@ import LoginModal from "@/app/components/forms/LoginForm";
 import RegisterModal from "@/app/components/forms/RegisterForm";
 import ButtonPrimary from "@/app/components/ui/ButtonPrimary";
 
-import { Menu, X, ChevronDown, LogOut } from "lucide-react";
+import { Menu, X, ChevronDown, LogOut, LayoutDashboard } from "lucide-react";
 
 export default function Header() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
@@ -142,6 +142,25 @@ export default function Header() {
                 </button>
               </Link>
 
+              {user ? (
+                <Link href="/dashboard">
+                  <button
+                    className="p-2.5 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transition-all duration-200"
+                    title="Dashboard"
+                  >
+                    <LayoutDashboard size={20} />
+                  </button>
+                </Link>
+              ) : (
+                <button
+                  disabled
+                  className="p-2.5 border-2 border-gray-300 text-gray-400 rounded-lg cursor-not-allowed opacity-50"
+                  title="You need to log in"
+                >
+                  <LayoutDashboard size={20} />
+                </button>
+              )}
+
               {!user ? (
                 <button
                   onClick={() => setIsLoginOpen(true)}
@@ -254,6 +273,27 @@ export default function Header() {
                     Am I Eligible?
                   </button>
                 </Link>
+
+                {user ? (
+                  <Link
+                    href="/dashboard"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <button className="w-full px-6 py-3 border-2 border-blue-600 text-blue-600 font-semibold rounded-lg hover:bg-blue-600 hover:text-white transition-all flex items-center justify-center gap-2">
+                      <LayoutDashboard size={20} />
+                      Dashboard
+                    </button>
+                  </Link>
+                ) : (
+                  <button
+                    disabled
+                    className="w-full px-6 py-3 border-2 border-gray-300 text-gray-400 font-semibold rounded-lg cursor-not-allowed opacity-50 flex items-center justify-center gap-2"
+                    title="You need to log in"
+                  >
+                    <LayoutDashboard size={20} />
+                    Dashboard
+                  </button>
+                )}
 
                 {!user ? (
                   <button

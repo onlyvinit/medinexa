@@ -38,6 +38,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     localStorage.removeItem("auth_user");
     setUser(null);
     document.cookie = "auth_user=; Max-Age=0; path=/;";
+    window.location.href = "/";
   };
 
   return (
