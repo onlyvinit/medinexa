@@ -71,9 +71,6 @@ export default function IntakeFlow() {
   const progressPercent = Math.min((currentStepIndex / totalSteps) * 100, 100);
   const currentUiStep = Math.min(currentStepIndex + 1, totalSteps);
 
-  // -------------------------------
-  // HANDLE GENERIC JSON STEPS
-  // -------------------------------
   const handleGenericStepSubmit = (
     stepId: string,
     stepAnswers: Record<string, any>
@@ -81,27 +78,21 @@ export default function IntakeFlow() {
     const combined = { ...intakeAnswers, ...stepAnswers };
     const nextIndex = currentStepIndex + 1;
 
-    // Save answers inside hook
     saveGenericStepAnswers(stepAnswers);
 
-    // Save continuously into localStorage
     if (typeof window !== "undefined") {
       localStorage.setItem("intakeAnswers", JSON.stringify(combined));
     }
 
-    // Finished all steps?
     if (nextIndex > intakeConfig.steps.length) {
       const finalData = { patientInfo, intakeAnswers: combined };
 
-      // Persist final intake data
       localStorage.setItem("intakeFlowState_v1", JSON.stringify(finalData));
 
-      // Recommendation result
       const { product, reason } = recommendProduct(products, combined as any);
 
       if (!product) return router.push("/no-eligible-medication");
 
-      // Save recommendation for payment/order
       localStorage.setItem(
         "recommendation",
         JSON.stringify({
@@ -117,9 +108,6 @@ export default function IntakeFlow() {
     }
   };
 
-  // -------------------------------
-  // RENDER FIELD
-  // -------------------------------
   const renderQuestionField = (
     q: Question,
     value: any,
@@ -206,9 +194,6 @@ export default function IntakeFlow() {
     }
   };
 
-  // -------------------------------
-  // GENERIC STEP COMPONENT
-  // -------------------------------
   const GenericStep = ({ step }: { step: StepConfig }) => {
     const [localAnswers, setLocalAnswers] = useState<Record<string, any>>(
       Object.fromEntries(
@@ -235,7 +220,6 @@ export default function IntakeFlow() {
       handleGenericStepSubmit(step.id, localAnswers);
     };
 
-    // Check if all required fields are filled
     const isStepValid = step.questions.every((q) => {
       if (!q.required) return true;
       const value = localAnswers[q.id];
@@ -295,13 +279,9 @@ export default function IntakeFlow() {
     );
   };
 
-  // ---------------------------------
-  // RENDER STEP BY INDEX
-  // ---------------------------------
   const jsonStepIndex = currentStepIndex - 1;
   const step = intakeConfig.steps[jsonStepIndex];
 
-  // Patient Info (Step 0)
   if (currentStepIndex === 0) {
     return (
       <div className="w-full max-w-3xl mx-auto">
@@ -315,7 +295,6 @@ export default function IntakeFlow() {
     );
   }
 
-  // Body Metrics Step
   if (step?.id === "bodyMetrics") {
     return (
       <div className="w-full max-w-3xl mx-auto">

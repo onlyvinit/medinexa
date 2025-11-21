@@ -21,12 +21,10 @@ export default function OrderList() {
       try {
         const allOrders = await getAllOrders();
 
-        // Filter orders for current user
         const userOrders = allOrders.filter(
           (order) => order.userId === user.id
         );
 
-        // Sort by most recent first
         const sortedOrders = userOrders.sort((a, b) => {
           const dateA = new Date(a.createdAt || 0).getTime();
           const dateB = new Date(b.createdAt || 0).getTime();

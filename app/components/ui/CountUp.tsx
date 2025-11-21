@@ -10,7 +10,13 @@ interface CountUpProps {
   decimals?: number;
 }
 
-export default function CountUp({ end, duration = 2000, suffix = "", prefix = "", decimals = 0 }: CountUpProps) {
+export default function CountUp({
+  end,
+  duration = 2000,
+  suffix = "",
+  prefix = "",
+  decimals = 0,
+}: CountUpProps) {
   const [count, setCount] = useState(0);
   const countRef = useRef<HTMLSpanElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -43,14 +49,12 @@ export default function CountUp({ end, duration = 2000, suffix = "", prefix = ""
       if (!startTime) startTime = timestamp;
       const progress = timestamp - startTime;
       const percentage = Math.min(progress / duration, 1);
-      
-      // Easing function (easeOutExpo)
+
       const easeOut = (x: number): number => {
         return x === 1 ? 1 : 1 - Math.pow(2, -10 * x);
       };
 
-      const currentCount = percentage * end; // Linear
-      // const currentCount = easeOut(percentage) * end; // Eased
+      const currentCount = percentage * end;
 
       setCount(currentCount);
 

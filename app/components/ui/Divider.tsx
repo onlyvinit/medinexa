@@ -16,4 +16,3 @@ export default function Divider({ className = "" }: DividerProps) {
     />
   );
 }
-// Divider component

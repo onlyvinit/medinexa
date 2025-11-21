@@ -1,4 +1,3 @@
-// CheckboxInput component
 "use client";
 
 import React from "react";
@@ -20,7 +19,7 @@ export default function CheckboxInput({
   onChange,
   required = false,
   disabled = false,
-  className = ""
+  className = "",
 }: CheckboxInputProps) {
   return (
     <label className={`flex items-center gap-2 cursor-pointer ${className}`}>

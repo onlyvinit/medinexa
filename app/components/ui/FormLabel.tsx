@@ -1,4 +1,3 @@
-// FormLabel component
 "use client";
 
 import React from "react";
@@ -9,7 +8,11 @@ interface FormLabelProps {
   className?: string;
 }
 
-export default function FormLabel({ label, required = false, className = "" }: FormLabelProps) {
+export default function FormLabel({
+  label,
+  required = false,
+  className = "",
+}: FormLabelProps) {
   return (
     <label className={`text-sm font-medium text-gray-700 ${className}`}>
       {label}

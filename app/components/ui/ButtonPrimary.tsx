@@ -1,4 +1,3 @@
-// ButtonPrimary component
 "use client";
 
 interface ButtonPrimaryProps {

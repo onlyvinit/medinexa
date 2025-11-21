@@ -26,7 +26,6 @@ export default function OrderStatusChart() {
         declined: 0,
       };
 
-      // Count statuses
       orders.forEach((order) => {
         statusCounts[order.status] = (statusCounts[order.status] || 0) + 1;
       });
@@ -46,7 +45,6 @@ export default function OrderStatusChart() {
         statusCounts.declined,
       ];
 
-      // Fallback if no orders yet
       if (values.every((v) => v === 0)) {
         setChartData({
           labels: ["No Orders"],
@@ -66,11 +64,11 @@ export default function OrderStatusChart() {
           {
             data: values,
             backgroundColor: [
-              "#6366f1", // Pending Review - Indigo
-              "#22c55e", // Approved - Green
-              "#3b82f6", // Shipped - Blue
-              "#10b981", // Completed - Emerald
-              "#ef4444", // Declined - Red
+              "#6366f1",
+              "#22c55e",
+              "#3b82f6",
+              "#10b981",
+              "#ef4444",
             ],
             hoverOffset: 6,
           },

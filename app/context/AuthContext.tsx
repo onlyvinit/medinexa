@@ -1,11 +1,6 @@
 "use client";
 
-import React, {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-} from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 interface User {
   id: string;
@@ -25,7 +20,6 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
 
-  // Load from storage on initial load
   useEffect(() => {
     const raw = localStorage.getItem("auth_user");
     if (raw) setUser(JSON.parse(raw));
@@ -35,7 +29,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem("auth_user", JSON.stringify(userData));
     setUser(userData);
 
-    // Cookie for middleware
     document.cookie = `auth_user=${encodeURIComponent(
       JSON.stringify(userData)
     )}; path=/;`;

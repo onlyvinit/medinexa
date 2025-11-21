@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 type IntakeAnswers = Record<string, any>;
 
 interface IntakeFlowState {
-  currentStepIndex: number; // 0 = patient info, 1 = first JSON step, etc.
+  currentStepIndex: number;
   patientInfo: any | null;
   intakeAnswers: IntakeAnswers;
 }
@@ -48,7 +48,6 @@ function loadInitialState(): IntakeFlowState {
 export default function useIntakeFlow() {
   const [state, setState] = useState<IntakeFlowState>(() => loadInitialState());
 
-  // Persist to localStorage on each state change (client-side only)
   useEffect(() => {
     if (typeof window === "undefined") return;
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
@@ -65,7 +64,7 @@ export default function useIntakeFlow() {
     setState((prev) => ({
       ...prev,
       patientInfo: info,
-      currentStepIndex: 1, // jump to first JSON step (bodyMetrics)
+      currentStepIndex: 1,
     }));
   };
 

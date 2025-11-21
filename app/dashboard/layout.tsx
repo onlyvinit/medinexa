@@ -14,26 +14,14 @@ export default function DashboardLayout({
 
   return (
     <div className="min-h-screen flex bg-[#f8f9fb]">
+      <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
 
-      {/* LOGIN MODAL (for admin login prompt) */}
-      <LoginModal
-        isOpen={isLoginOpen}
-        onClose={() => setIsLoginOpen(false)}
-      />
-
-      {/* SIDEBAR */}
       <Sidebar />
 
-      {/* MAIN CONTENT */}
       <div className="flex-1 flex flex-col">
-
-        {/* HEADER — now with admin button trigger */}
         <DashboardHeader onOpenLogin={() => setIsLoginOpen(true)} />
 
-        {/* PAGE CONTENT */}
-        <main className="flex-1 px-6 py-6">
-          {children}
-        </main>
+        <main className="flex-1 px-6 py-6">{children}</main>
       </div>
     </div>
   );

@@ -67,7 +67,6 @@ export default function RegisterModal({
   return (
     <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex justify-center items-center z-2000">
       <div className="bg-white w-full max-w-md p-6 rounded-xl shadow-lg">
-        {/* HEADER */}
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-semibold">Create Account</h2>
           <button onClick={onClose} className="text-gray-500 text-xl">
@@ -75,10 +74,8 @@ export default function RegisterModal({
           </button>
         </div>
 
-        {/* ERROR */}
         {error && <p className="text-red-600 text-sm mb-3">{error}</p>}
 
-        {/* NAME */}
         <input
           type="text"
           placeholder="Full Name"
@@ -87,7 +84,6 @@ export default function RegisterModal({
           onChange={(e) => setName(e.target.value)}
         />
 
-        {/* EMAIL */}
         <input
           type="email"
           placeholder="Email"
@@ -96,7 +92,6 @@ export default function RegisterModal({
           onChange={(e) => setEmail(e.target.value)}
         />
 
-        {/* PASSWORD */}
         <input
           type="password"
           placeholder="Password (min 6 characters)"
@@ -105,14 +100,12 @@ export default function RegisterModal({
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        {/* REGISTER BUTTON */}
         <ButtonPrimary
           label={loading ? "Creating account..." : "Register"}
           disabled={loading}
           onClick={handleRegister}
         />
 
-        {/* SWITCH TO LOGIN */}
         <p className="text-center text-sm text-gray-600 mt-4">
           Already have an account?{" "}
           <button

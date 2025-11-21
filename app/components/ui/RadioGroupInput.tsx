@@ -1,4 +1,3 @@
-// RadioGroupInput component
 "use client";
 
 import React from "react";
@@ -11,7 +10,7 @@ interface RadioGroupOption {
 interface RadioGroupInputProps {
   label?: string;
   name: string;
-  value: string;                      // selected answer
+  value: string;
   options: RadioGroupOption[];
   onChange: (value: string) => void;
   required?: boolean;

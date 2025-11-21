@@ -17,7 +17,6 @@ export default function Footer() {
       <footer className="bg-[#0a0f29] text-white py-16 font-sans">
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row gap-16">
-            {/* Left Section - Replacement for White Box */}
             <div className="lg:w-1/3 bg-linear-to-br from-blue-900/40 to-purple-900/40 rounded-3xl p-8 flex flex-col justify-between border border-white/10 backdrop-blur-sm">
               <div>
                 <h2 className="text-3xl font-bold mb-4 text-white">Medinexa</h2>
@@ -42,10 +41,8 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Right Section - Links */}
             <div className="lg:w-2/3 flex flex-col justify-between">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
-                {/* Learn */}
                 <div>
                   <h3 className="text-gray-400 text-sm font-medium mb-6 uppercase tracking-wider">
                     Learn
@@ -72,7 +69,6 @@ export default function Footer() {
                   </ul>
                 </div>
 
-                {/* Connect */}
                 <div>
                   <h3 className="text-gray-400 text-sm font-medium mb-6 uppercase tracking-wider">
                     Connect
@@ -110,7 +106,6 @@ export default function Footer() {
                   </ul>
                 </div>
 
-                {/* Resources */}
                 <div>
                   <h3 className="text-gray-400 text-sm font-medium mb-6 uppercase tracking-wider">
                     Resources
@@ -135,7 +130,6 @@ export default function Footer() {
                   </ul>
                 </div>
 
-                {/* Legal */}
                 <div>
                   <h3 className="text-gray-400 text-sm font-medium mb-6 uppercase tracking-wider">
                     Legal
@@ -177,7 +171,6 @@ export default function Footer() {
                 </div>
               </div>
 
-              {/* Bottom Actions & Socials */}
               <div className="flex flex-col md:flex-row justify-between items-center border-t border-white/10 pt-8 gap-6">
                 <div className="flex gap-4">
                   {!user ? (
@@ -204,7 +197,6 @@ export default function Footer() {
 
                 <div className="flex gap-6 items-center">
                   <Facebook className="w-5 h-5 cursor-pointer text-gray-400 hover:text-white transition-colors" />
-                  {/* TikTok SVG */}
                   <svg
                     className="w-5 h-5 cursor-pointer text-gray-400 hover:text-white transition-colors"
                     fill="currentColor"
@@ -220,7 +212,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Copyright & Disclaimer */}
           <div className="mt-16 pt-8 border-t border-white/10 text-xs text-gray-500">
             <p className="mb-4 font-medium text-gray-400">
               © 2025 Medinexa Health

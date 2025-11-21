@@ -33,7 +33,6 @@ export default function OrdersTrendChart() {
     async function loadData() {
       const orders = await getAllOrders();
 
-      // Generate last 30 days labels
       const labels: string[] = [];
       const counts: Record<string, number> = {};
 
@@ -45,7 +44,6 @@ export default function OrdersTrendChart() {
         counts[key] = 0;
       }
 
-      // Count orders by day
       orders.forEach((order) => {
         if (!order.createdAt) return;
         const dateKey = order.createdAt.split("T")[0];
@@ -56,7 +54,6 @@ export default function OrdersTrendChart() {
 
       const values = labels.map((d) => counts[d]);
 
-      // If no orders → placeholder trend
       if (values.every((v) => v === 0)) {
         setChartData({
           labels,
@@ -73,7 +70,6 @@ export default function OrdersTrendChart() {
         return;
       }
 
-      // Real Data
       setChartData({
         labels,
         datasets: [

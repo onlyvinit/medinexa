@@ -1,4 +1,3 @@
-// TextAreaInput component
 "use client";
 
 import React from "react";
@@ -24,7 +23,7 @@ export default function TextAreaInput({
   required = false,
   disabled = false,
   rows = 4,
-  className = ""
+  className = "",
 }: TextAreaInputProps) {
   return (
     <div className={`flex flex-col gap-1 ${className}`}>

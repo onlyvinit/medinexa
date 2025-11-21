@@ -21,12 +21,10 @@ export default function MyOrdersPage() {
       try {
         const allOrders = await getAllOrders();
 
-        // Filter orders for current user
         const userOrders = allOrders.filter(
           (order) => order.userId === user.id
         );
 
-        // Sort by most recent first
         const sortedOrders = userOrders.sort((a, b) => {
           const dateA = new Date(a.createdAt || 0).getTime();
           const dateB = new Date(b.createdAt || 0).getTime();
@@ -83,7 +81,6 @@ export default function MyOrdersPage() {
         </p>
       </div>
 
-      {/* ORDERS TABLE */}
       <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">
@@ -144,7 +141,6 @@ export default function MyOrdersPage() {
         </div>
       </div>
 
-      {/* SUMMARY */}
       <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
         <p className="text-sm text-blue-900">
           <span className="font-semibold">Total Orders:</span> {orders.length}

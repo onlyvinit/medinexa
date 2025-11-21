@@ -5,7 +5,6 @@ import Link from "next/link";
 import { Search, Filter, Eye } from "lucide-react";
 import StatusBadge from "../../ui/StatusBadge";
 
-// Mock orders for now – replace later with API/DB
 const MOCK_ORDERS = [
   {
     id: "ORD-90321",
@@ -158,9 +157,7 @@ export default function AdminOrdersList() {
                     <span className="text-gray-800 text-sm font-medium">
                       {order.user}
                     </span>
-                    <span className="text-gray-500 text-xs">
-                      {order.email}
-                    </span>
+                    <span className="text-gray-500 text-xs">{order.email}</span>
                   </div>
                 </td>
 

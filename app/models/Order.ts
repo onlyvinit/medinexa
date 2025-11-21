@@ -1,4 +1,3 @@
-// app/models/Order.ts
 import { ObjectId } from "mongodb";
 
 export interface OrderDocument {

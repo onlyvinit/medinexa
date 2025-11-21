@@ -35,7 +35,6 @@ export default function PaymentPage() {
     setLoading(false);
 
     if (data.success) {
-      // Don't clear localStorage here - let the order page handle it after saving
       router.push(`/order/${slug}?status=success&orderId=${data.orderId}`);
     } else {
       router.push(`/order/${slug}?status=fail&reason=${data.error}`);

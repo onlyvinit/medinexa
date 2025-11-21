@@ -1,13 +1,7 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import {
-  X,
-  LayoutDashboard,
-  Package,
-  Users,
-  LogOut,
-} from "lucide-react";
+import { X, LayoutDashboard, Package, Users, LogOut } from "lucide-react";
 import ButtonPrimary from "@/app/components/ui/ButtonPrimary";
 import { useAuth } from "@/app/context/AuthContext";
 
@@ -16,7 +10,6 @@ export default function AdminSidebar({ onClose }: { onClose?: () => void }) {
   const router = useRouter();
   const { logout } = useAuth();
 
-  // Sidebar navigation items
   const navItems = [
     {
       label: "Admin Panel",

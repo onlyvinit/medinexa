@@ -11,13 +11,12 @@ export default function RecentOrdersTable() {
   useEffect(() => {
     async function loadOrders() {
       const list = await getAllOrders();
-      // Sort newest first
       const sorted = list.sort(
         (a: any, b: any) =>
           new Date(b.createdAt || 0).getTime() -
           new Date(a.createdAt || 0).getTime()
       );
-      setOrders(sorted.slice(0, 8)); // Only show recent 8
+      setOrders(sorted.slice(0, 8));
     }
     loadOrders();
   }, []);

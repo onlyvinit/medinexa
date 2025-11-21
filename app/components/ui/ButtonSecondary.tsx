@@ -1,4 +1,3 @@
-// ButtonSecondary component
 "use client";
 
 import React from "react";
@@ -16,7 +15,7 @@ export default function ButtonSecondary({
   onClick,
   type = "button",
   disabled = false,
-  className = ""
+  className = "",
 }: ButtonSecondaryProps) {
   return (
     <button

@@ -29,7 +29,6 @@ export default function UpdateStatusModal({
   const handleUpdate = async () => {
     setLoading(true);
 
-    // Simulated API update
     await new Promise((res) => setTimeout(res, 800));
 
     if (onStatusChange) onStatusChange(status);
@@ -52,7 +51,6 @@ export default function UpdateStatusModal({
       {isOpen && (
         <div className="fixed inset-0 bg-black/40 flex justify-center items-center z-3000">
           <div className="bg-white w-full max-w-md p-6 rounded-xl shadow-lg relative">
-            
             {/* CLOSE BUTTON */}
             <button
               className="absolute right-4 top-4 text-gray-500"

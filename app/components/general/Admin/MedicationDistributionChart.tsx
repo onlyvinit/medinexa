@@ -18,7 +18,6 @@ export default function MedicationDistributionChart() {
     async function loadData() {
       const orders = await getAllOrders();
 
-      // Count medication usage
       const counts: Record<string, number> = {};
 
       orders.forEach((order) => {
@@ -30,7 +29,6 @@ export default function MedicationDistributionChart() {
       const labels = Object.keys(counts);
       const values = Object.values(counts);
 
-      // If no orders exist yet → show empty placeholder
       if (labels.length === 0) {
         setChartData({
           labels: ["No data available"],
@@ -51,12 +49,12 @@ export default function MedicationDistributionChart() {
           {
             data: values,
             backgroundColor: [
-              "#4f46e5", // Indigo
-              "#22c55e", // Green
-              "#f59e0b", // Amber
-              "#ef4444", // Red
-              "#3b82f6", // Blue
-              "#a855f7", // Purple
+              "#4f46e5",
+              "#22c55e",
+              "#f59e0b",
+              "#ef4444",
+              "#3b82f6",
+              "#a855f7",
             ],
             hoverOffset: 6,
           },

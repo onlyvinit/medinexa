@@ -236,7 +236,6 @@ export default function OrderDetailPage({
           </h3>
           <div className="space-y-4">
             {Object.entries(order.intakeAnswers).map(([key, value]) => {
-              // Skip if already shown in health metrics
               if (["weight", "height", "bmi", "bmiLabel"].includes(key)) {
                 return null;
               }

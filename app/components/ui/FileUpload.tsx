@@ -8,7 +8,7 @@ interface FileUploadProps {
   file?: File | null;
   onChange: (file: File | null) => void;
   required?: boolean;
-  accept?: string; // e.g. "image/*"
+  accept?: string;
   className?: string;
 }
 
@@ -24,16 +24,14 @@ export default function FileUpload({
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [error, setError] = React.useState<string>("");
 
-  const MAX_FILE_SIZE = 5 * 1024 * 1024; 
+  const MAX_FILE_SIZE = 5 * 1024 * 1024;
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0] || null;
 
-    // Clear previous error
     setError("");
 
     if (selectedFile) {
-      // Check file size
       if (selectedFile.size > MAX_FILE_SIZE) {
         setError(
           `File size must be less than 5MB. Your file is ${(
@@ -41,7 +39,6 @@ export default function FileUpload({
             (1024 * 1024)
           ).toFixed(2)}MB`
         );
-        // Clear the input
         if (inputRef.current) {
           inputRef.current.value = "";
         }

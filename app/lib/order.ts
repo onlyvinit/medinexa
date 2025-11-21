@@ -1,33 +1,26 @@
-// app/types/order.ts
-
 export interface Order {
-  id: string;                         // e.g., "ORD-90321"
-  userId: string;                     // User identifier from login
-  userEmail: string;                  // For admin reference
-  userName: string;                   // Optional convenience
+  id: string;
+  userId: string;
+  userEmail: string;
+  userName: string;
 
   product: {
-    id: string;                       // product ID e.g. "semaglutide"
-    name: string;                     // product name
-    price: number;                    // product price
-    slug: string;                     // product slug
-    reason: string;                   // why this product was recommended
+    id: string;
+    name: string;
+    price: number;
+    slug: string;
+    reason: string;
   };
 
-  patientInfo: any;         
-  intakeAnswers: Record<string, any>; 
+  patientInfo: any;
+  intakeAnswers: Record<string, any>;
 
   payment: {
     status: "success" | "failed" | "pending";
-    date: string;                     // payment timestamp
+    date: string;
   };
 
-  status:                               
-    | "pending_review"
-    | "approved"
-    | "shipped"
-    | "completed"
-    | "declined";                    // admin-updatable status
+  status: "pending_review" | "approved" | "shipped" | "completed" | "declined";
 
-  createdAt: string;                  // order creation timestamp
+  createdAt: string;
 }

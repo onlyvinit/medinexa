@@ -30,12 +30,10 @@ export default function BMIForm({ onNext, onBack }: BMIFormProps) {
     const weightNum = parseFloat(w);
     const heightNum = parseFloat(h);
 
-    // Weight validation (20-300 kg)
     if (w && (isNaN(weightNum) || weightNum < 20 || weightNum > 300)) {
       newErrors.weight = "Weight must be between 20 and 300 kg";
     }
 
-    // Height validation (100-250 cm)
     if (h && (isNaN(heightNum) || heightNum < 100 || heightNum > 250)) {
       newErrors.height = "Height must be between 100 and 250 cm";
     }
@@ -106,7 +104,6 @@ export default function BMIForm({ onNext, onBack }: BMIFormProps) {
         </p>
 
         <div className="flex flex-col gap-4">
-          {/* WEIGHT */}
           <div className="flex flex-col gap-1">
             <label className="text-sm font-medium text-gray-700">
               Weight (kg) <span className="text-red-500">*</span>
@@ -130,7 +127,6 @@ export default function BMIForm({ onNext, onBack }: BMIFormProps) {
             )}
           </div>
 
-          {/* HEIGHT */}
           <div className="flex flex-col gap-1">
             <label className="text-sm font-medium text-gray-700">
               Height (cm) <span className="text-red-500">*</span>
@@ -154,7 +150,6 @@ export default function BMIForm({ onNext, onBack }: BMIFormProps) {
             )}
           </div>
 
-          {/* BMI RESULTS */}
           {bmi && (
             <div className="mt-2 p-4 bg-blue-50 rounded-lg border border-blue-200">
               <p className="text-lg font-semibold text-blue-900">
@@ -164,7 +159,6 @@ export default function BMIForm({ onNext, onBack }: BMIFormProps) {
           )}
         </div>
 
-        {/* BUTTONS */}
         <div className="mt-6 flex items-center gap-3 justify-between">
           {onBack && (
             <ButtonPrimary label="Back" onClick={onBack} type="button" />

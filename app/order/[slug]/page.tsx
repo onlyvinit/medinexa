@@ -16,11 +16,11 @@ export default function OrderStatusPage() {
 
   const { user } = useAuth();
 
-  const status = searchParams.get("status"); // success | fail
+  const status = searchParams.get("status");
   const failReason = searchParams.get("reason") || "Unknown error";
 
   const [order, setOrder] = useState<Order | null>(null);
-  const orderCreatedRef = useRef(false); // Track if order was created
+  const orderCreatedRef = useRef(false);
 
   const product = products.find((p) => p.slug === slug);
 
@@ -33,13 +33,11 @@ export default function OrderStatusPage() {
   }
 
   useEffect(() => {
-    // Prevent duplicate order creation
     if (!user || status !== "success" || !product) return;
-    if (orderCreatedRef.current) return; // Already created
+    if (orderCreatedRef.current) return;
 
-    orderCreatedRef.current = true; // Mark as creating
+    orderCreatedRef.current = true;
 
-    // Read data from localStorage BEFORE clearing
     const patientInfo =
       typeof window !== "undefined"
         ? JSON.parse(localStorage.getItem("patientInfo") || "{}")
@@ -54,11 +52,6 @@ export default function OrderStatusPage() {
       typeof window !== "undefined"
         ? JSON.parse(localStorage.getItem("recommendation") || "{}")
         : {};
-
-    // Debug: Log what we're getting from localStorage
-    console.log("📦 Patient Info from localStorage:", patientInfo);
-    console.log("📦 Intake Answers from localStorage:", intakeAnswers);
-    console.log("📦 Recommendation from localStorage:", recommendation);
 
     const orderId = "ORD-" + Math.floor(Math.random() * 900000 + 100000);
 
@@ -87,17 +80,12 @@ export default function OrderStatusPage() {
       createdAt: new Date().toISOString(),
     };
 
-    console.log("📤 Order being sent to database:", newOrder);
-
     async function saveOrder() {
       const savedOrder = await createOrder(newOrder);
-      console.log("✅ Order saved to database:", savedOrder);
       if (savedOrder) {
         setOrder(savedOrder);
       }
     }
-
-    // Clear cached form data AFTER creating order object
     localStorage.removeItem("patientInfo");
     localStorage.removeItem("intakeAnswers");
     localStorage.removeItem("recommendation");

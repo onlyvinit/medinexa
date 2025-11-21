@@ -14,13 +14,11 @@ export default function DashboardHeader({
   const router = useRouter();
 
   const handleAdminClick = () => {
-    // If already logged in as admin → go to admin dashboard
     if (user?.role === "admin") {
       router.push("/admin");
       return;
     }
 
-    // Otherwise open login modal → user enters admin credentials
     onOpenLogin();
   };
 
@@ -31,7 +29,6 @@ export default function DashboardHeader({
       </h2>
 
       <div className="flex items-center gap-5">
-
         {/* HOME */}
         <Link href="/">
           <HomeIcon className="w-6 h-6 text-black" />

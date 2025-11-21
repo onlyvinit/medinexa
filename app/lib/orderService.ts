@@ -1,9 +1,7 @@
-// app/lib/orderService.ts
 "use client";
 
 import { Order } from "@/app/types/order";
 
-// Fetch all orders from API
 export async function getAllOrders(): Promise<Order[]> {
   try {
     const res = await fetch("/api/orders");
@@ -15,7 +13,6 @@ export async function getAllOrders(): Promise<Order[]> {
   }
 }
 
-// Create a new order via API
 export async function createOrder(order: Order): Promise<Order | null> {
   try {
     const res = await fetch("/api/orders", {
@@ -31,7 +28,6 @@ export async function createOrder(order: Order): Promise<Order | null> {
   }
 }
 
-// Fetch single order by ID
 export async function getOrderById(id: string): Promise<Order | null> {
   try {
     const res = await fetch(`/api/orders/${id}`);
@@ -43,7 +39,6 @@ export async function getOrderById(id: string): Promise<Order | null> {
   }
 }
 
-// Update order status
 export async function updateOrderStatus(
   id: string,
   newStatus:

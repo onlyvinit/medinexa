@@ -1,4 +1,3 @@
-// MultiSelectInput component
 "use client";
 
 import React from "react";
@@ -11,7 +10,7 @@ interface MultiSelectOption {
 interface MultiSelectInputProps {
   label?: string;
   name: string;
-  values: string[]; // array of selected values
+  values: string[];
   options: MultiSelectOption[];
   onChange: (updatedValues: string[]) => void;
   required?: boolean;
@@ -30,28 +29,21 @@ export default function MultiSelectInput({
   const handleSelect = (value: string) => {
     let updated = [...values];
 
-    // Check if this is a "None" option (case-insensitive)
     const isNoneOption =
       value.toLowerCase().includes("none") ||
       value.toLowerCase() === "n/a" ||
       value.toLowerCase() === "na";
 
-    // If "None" is clicked
     if (isNoneOption) {
       if (updated.includes(value)) {
-        // Uncheck "None"
         updated = updated.filter((v) => v !== value);
       } else {
-        // Check "None" and clear all other selections
         updated = [value];
       }
     } else {
-      // If any other option is clicked
       if (updated.includes(value)) {
-        // Uncheck this option
         updated = updated.filter((v) => v !== value);
       } else {
-        // Check this option and remove "None" if it exists
         updated = updated.filter((v) => {
           const vLower = v.toLowerCase();
           return !(

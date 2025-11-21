@@ -17,10 +17,8 @@ export function useIntakeSummary() {
       }
 
       try {
-        // Get all orders
         const orders = await getAllOrders();
 
-        // Filter orders for current user
         const userOrders = orders.filter((order) => order.userId === user.id);
 
         if (userOrders.length === 0) {
@@ -29,16 +27,14 @@ export function useIntakeSummary() {
           return;
         }
 
-        // Sort by createdAt to get the latest order
         const sortedOrders = userOrders.sort((a, b) => {
           const dateA = new Date(a.createdAt || 0).getTime();
           const dateB = new Date(b.createdAt || 0).getTime();
-          return dateB - dateA; // Most recent first
+          return dateB - dateA;
         });
 
         const latestOrder = sortedOrders[0];
 
-        // Return the intake data from the latest order
         setSummary({
           patientInfo: latestOrder.patientInfo || {},
           intakeAnswers: latestOrder.intakeAnswers || {},

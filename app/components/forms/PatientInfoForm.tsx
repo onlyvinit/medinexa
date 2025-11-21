@@ -35,7 +35,6 @@ export default function PatientInfoForm({ onNext }: PatientInfoFormProps) {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
 
-    // Clear error when user starts typing
     if (errors[name]) {
       setErrors({ ...errors, [name]: "" });
     }
@@ -44,7 +43,6 @@ export default function PatientInfoForm({ onNext }: PatientInfoFormProps) {
   const validateForm = (): boolean => {
     const newErrors: Record<string, string> = {};
 
-    // Phone validation (10-15 digits, optional + at start)
     const phoneRegex = /^\+?[0-9]{10,15}$/;
     if (!form.phone.trim()) {
       newErrors.phone = "Phone number is required";
@@ -52,7 +50,6 @@ export default function PatientInfoForm({ onNext }: PatientInfoFormProps) {
       newErrors.phone = "Please enter a valid phone number (10-15 digits)";
     }
 
-    // Age validation (18-120)
     const age = parseInt(form.age);
     if (!form.age) {
       newErrors.age = "Age is required";
@@ -60,12 +57,10 @@ export default function PatientInfoForm({ onNext }: PatientInfoFormProps) {
       newErrors.age = "Age must be between 18 and 120";
     }
 
-    // Gender validation
     if (!form.gender) {
       newErrors.gender = "Please select your gender";
     }
 
-    // Address validation (min 10 characters)
     if (!form.address.trim()) {
       newErrors.address = "Address is required";
     } else if (form.address.trim().length < 10) {
@@ -82,7 +77,6 @@ export default function PatientInfoForm({ onNext }: PatientInfoFormProps) {
     }
   };
 
-  // Check if form is valid for button state
   const isFormValid =
     form.phone.trim() !== "" &&
     form.age !== "" &&
@@ -99,7 +93,6 @@ export default function PatientInfoForm({ onNext }: PatientInfoFormProps) {
       </p>
 
       <Card>
-        {/* FULL NAME */}
         <TextInput
           label="Full Name"
           name="fullName"
@@ -111,7 +104,6 @@ export default function PatientInfoForm({ onNext }: PatientInfoFormProps) {
           className="mb-4 opacity-60 cursor-not-allowed"
         />
 
-        {/* EMAIL */}
         <TextInput
           label="Email"
           onChange={handleChange}
@@ -121,7 +113,6 @@ export default function PatientInfoForm({ onNext }: PatientInfoFormProps) {
           className="mb-4 opacity-60 cursor-not-allowed"
         />
 
-        {/* PHONE */}
         <div className="mb-4">
           <TextInput
             label="Phone Number"
@@ -136,7 +127,6 @@ export default function PatientInfoForm({ onNext }: PatientInfoFormProps) {
           )}
         </div>
 
-        {/* AGE + GENDER */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <div>
             <NumberInput
@@ -171,7 +161,6 @@ export default function PatientInfoForm({ onNext }: PatientInfoFormProps) {
           </div>
         </div>
 
-        {/* ADDRESS */}
         <div className="mb-4">
           <TextAreaInput
             label="Address"
@@ -187,7 +176,6 @@ export default function PatientInfoForm({ onNext }: PatientInfoFormProps) {
           )}
         </div>
 
-        {/* SUBMIT */}
         <ButtonPrimary
           label="Continue"
           onClick={handleSubmit}

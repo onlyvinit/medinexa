@@ -1,4 +1,3 @@
-// app/models/User.ts
 import { ObjectId } from "mongodb";
 
 export interface UserDocument {
@@ -6,7 +5,7 @@ export interface UserDocument {
   id: string;
   name: string;
   email: string;
-  password: string; // bcrypt hashed
+  password: string;
   role: "user" | "admin";
   createdAt: string;
 }

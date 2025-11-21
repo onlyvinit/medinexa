@@ -23,9 +23,8 @@ export default function Header() {
   const { user, logout } = useAuth();
   const params = useSearchParams();
 
-  // NEW PARAMS
-  const auth = params.get("auth"); // "required"
-  const reason = params.get("reason"); // "user" | "admin"
+  const auth = params.get("auth");
+  const reason = params.get("reason");
   const redirect = params.get("redirect");
 
   useEffect(() => {
