@@ -1,0 +1,41 @@
+[
+    {
+        "id": "semaglutide",
+        "name": "Semaglutide",
+        "price": 99,
+        "period": "mo",
+        "description": "Semaglutide is a GLP-1 receptor agonist that helps regulate appetite and blood sugar levels. It is effective for weight management and type 2 diabetes.",
+        "image": "/images/Semaglutide.webp",
+        "features": [
+            "Appetite suppression",
+            "Blood sugar control",
+            "Weekly injection"
+        ]
+    },
+    {
+        "id": "tirzepatide",
+        "name": "Tirzepatide",
+        "price": 199,
+        "period": "mo",
+        "description": "Tirzepatide acts on both GIP and GLP-1 receptors to provide dual-action weight management support, often leading to greater weight loss results.",
+        "image": "/images/Tirzepatide.webp",
+        "features": [
+            "Dual-action formula",
+            "Enhanced weight loss",
+            "Weekly injection"
+        ]
+    },
+    {
+        "id": "oral-semaglutide",
+        "name": "Oral Semaglutide",
+        "price": 149,
+        "period": "mo",
+        "description": "A daily oral tablet alternative to injections, offering similar appetite regulation benefits for those who prefer pills over needles.",
+        "image": "/images/Semaglutide.webp",
+        "features": [
+            "No needles required",
+            "Daily dosage",
+            "Convenient intake"
+        ]
+    }
+]

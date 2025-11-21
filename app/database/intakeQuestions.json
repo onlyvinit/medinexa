@@ -1,0 +1,198 @@
+{
+  "steps": [
+    {
+      "id": "bodyMetrics",
+      "title": "Body Metrics",
+      "questions": [
+        {
+          "id": "weight",
+          "question": "What is your current weight (kg)?",
+          "type": "number",
+          "required": true,
+          "logicTags": ["weight", "bmi"]
+        },
+        {
+          "id": "height",
+          "question": "What is your height (cm)?",
+          "type": "number",
+          "required": true,
+          "logicTags": ["height", "bmi"]
+        }
+      ]
+    },
+
+    {
+      "id": "goals",
+      "title": "Weight Loss Goals",
+      "questions": [
+        {
+          "id": "weight_loss_goal",
+          "question": "What is your primary weight-loss goal?",
+          "type": "single-select",
+          "required": true,
+          "options": [
+            { "label": "Lose less than 10 kg", "value": "less_10" },
+            { "label": "Lose 10–20 kg", "value": "10_20" },
+            { "label": "Lose 20–35 kg", "value": "20_35" },
+            { "label": "Lose more than 35 kg", "value": "35_plus" }
+          ],
+          "logicTags": ["goal"]
+        }
+      ]
+    },
+
+    {
+      "id": "medicalHistory",
+      "title": "Medical Conditions",
+      "questions": [
+        {
+          "id": "conditions",
+          "question": "Do you have any of the following medical conditions?",
+          "type": "multi-select",
+          "required": true,
+          "options": [
+            { "label": "Diabetes (Type 2)", "value": "diabetes" },
+            { "label": "High Blood Pressure", "value": "bp" },
+            { "label": "Thyroid Disorder", "value": "thyroid" },
+            { "label": "Heart Disease", "value": "heart" },
+            { "label": "High Cholesterol", "value": "cholesterol" },
+            { "label": "PCOS", "value": "pcos" },
+            { "label": "Depression / Anxiety", "value": "mental" },
+            { "label": "None", "value": "none" }
+          ],
+          "logicTags": ["conditions"]
+        },
+        {
+          "id": "doctor_obesity_diagnosis",
+          "question": "Have you ever been diagnosed with obesity-related conditions by a doctor?",
+          "type": "boolean",
+          "required": false,
+          "logicTags": ["obesity_related"]
+        }
+      ]
+    },
+
+    {
+      "id": "medications",
+      "title": "Current Medications",
+      "questions": [
+        {
+          "id": "current_medications",
+          "question": "Are you currently taking any of these medications?",
+          "type": "multi-select",
+          "required": true,
+          "options": [
+            { "label": "Insulin / Diabetes medications", "value": "diabetes_meds" },
+            { "label": "Blood pressure medications", "value": "bp_meds" },
+            { "label": "Antidepressants", "value": "antidepressants" },
+            { "label": "Anti-epileptics", "value": "antiepileptics" },
+            { "label": "Appetite suppressants", "value": "appetite_suppressants" },
+            { "label": "None", "value": "none" }
+          ],
+          "logicTags": ["medication_interaction"]
+        },
+        {
+          "id": "past_weightloss_meds",
+          "question": "Have you previously used any weight-loss medications?",
+          "type": "single-select",
+          "options": [
+            { "label": "Yes — GLP-1 injections", "value": "glp1" },
+            { "label": "Yes — Stimulants (Phentermine)", "value": "stimulants" },
+            { "label": "Yes — Orlistat", "value": "orlistat" },
+            { "label": "No", "value": "none" }
+          ],
+          "logicTags": ["previous_med_experience"]
+        }
+      ]
+    },
+
+    {
+      "id": "lifestyle",
+      "title": "Lifestyle",
+      "questions": [
+        {
+          "id": "eating_habits",
+          "question": "How would you describe your eating habits?",
+          "type": "single-select",
+          "required": true,
+          "options": [
+            { "label": "Frequent overeating", "value": "overeating" },
+            { "label": "Emotional eating", "value": "emotional" },
+            { "label": "Late-night eating", "value": "late" },
+            { "label": "Balanced diet but no weight loss", "value": "balanced" },
+            { "label": "Not sure", "value": "unsure" }
+          ],
+          "logicTags": ["behavior"]
+        },
+        {
+          "id": "exercise_frequency",
+          "question": "How many days per week do you exercise?",
+          "type": "single-select",
+          "required": true,
+          "options": [
+            { "label": "0 days", "value": "0" },
+            { "label": "1–2 days", "value": "1_2" },
+            { "label": "3–4 days", "value": "3_4" },
+            { "label": "5+ days", "value": "5_plus" }
+          ],
+          "logicTags": ["activity_level"]
+        }
+      ]
+    },
+
+    {
+      "id": "contraindications",
+      "title": "Contraindications",
+      "questions": [
+        {
+          "id": "allergies",
+          "question": "Do you have any known allergies to medications?",
+          "type": "multi-select",
+          "required": true,
+          "options": [
+            { "label": "GLP-1 medications (Semaglutide)", "value": "glp1_allergy" },
+            { "label": "Stimulants", "value": "stimulant_allergy" },
+            { "label": "Orlistat", "value": "orlistat_allergy" },
+            { "label": "None", "value": "none" }
+          ],
+          "logicTags": ["allergies"]
+        },
+        {
+          "id": "pancreatitis",
+          "question": "Have you ever had pancreatitis?",
+          "type": "boolean",
+          "required": true,
+          "logicTags": ["pancreatitis"]
+        },
+        {
+          "id": "uncontrolled_bp",
+          "question": "Do you have uncontrolled high blood pressure?",
+          "type": "boolean",
+          "required": true,
+          "logicTags": ["high_bp"]
+        }
+      ]
+    },
+
+    {
+      "id": "uploads",
+      "title": "Photos & Notes",
+      "questions": [
+        {
+          "id": "body_photo",
+          "question": "Upload a recent body or face photo.",
+          "type": "file-upload",
+          "required": false,
+          "logicTags": ["photo"]
+        },
+        {
+          "id": "notes",
+          "question": "Any notes you'd like your provider to know?",
+          "type": "text-long",
+          "required": false,
+          "logicTags": ["notes"]
+        }
+      ]
+    }
+  ]
+}
