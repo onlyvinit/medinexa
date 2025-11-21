@@ -2,13 +2,10 @@
 
 import { usePathname, useRouter } from "next/navigation";
 import { X, LayoutDashboard, Package, Users, LogOut } from "lucide-react";
-import ButtonPrimary from "@/app/components/ui/ButtonPrimary";
-import { useAuth } from "@/app/context/AuthContext";
 
 export default function AdminSidebar({ onClose }: { onClose?: () => void }) {
   const pathname = usePathname();
   const router = useRouter();
-  const { logout } = useAuth();
 
   const navItems = [
     {
@@ -69,20 +66,6 @@ export default function AdminSidebar({ onClose }: { onClose?: () => void }) {
           );
         })}
       </nav>
-
-      {/* LOGOUT BUTTON */}
-      <div className="p-4 border-t">
-        <button
-          onClick={() => {
-            logout();
-            router.push("/");
-          }}
-          className="flex w-full items-center gap-3 px-4 py-2 rounded-lg text-sm font-medium text-red-600 hover:bg-red-50 transition"
-        >
-          <LogOut size={18} />
-          Logout
-        </button>
-      </div>
     </aside>
   );
 }

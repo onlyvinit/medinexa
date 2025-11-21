@@ -25,7 +25,7 @@ export default function AdminLayout({
       )}
       <div className="flex-1 flex flex-col">
         <AdminHeader onMenuClick={() => setSidebarOpen(true)} />
-        <main className="p-6">{children}</main>
+        <main className="p-4 md:p-6">{children}</main>
       </div>
     </div>
   );

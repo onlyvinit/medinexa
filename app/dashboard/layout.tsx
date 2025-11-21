@@ -11,17 +11,21 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
     <div className="min-h-screen flex bg-[#f8f9fb]">
       <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
 
-      <Sidebar />
+      <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
 
       <div className="flex-1 flex flex-col">
-        <DashboardHeader onOpenLogin={() => setIsLoginOpen(true)} />
+        <DashboardHeader
+          onOpenLogin={() => setIsLoginOpen(true)}
+          onOpenSidebar={() => setIsSidebarOpen(true)}
+        />
 
-        <main className="flex-1 px-6 py-6">{children}</main>
+        <main className="flex-1 px-4 md:px-6 py-4 md:py-6">{children}</main>
       </div>
     </div>
   );
